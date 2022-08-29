@@ -7,7 +7,7 @@ import uuid
 
 import pytest
 
-import portforward
+import aioportforward
 
 
 @pytest.mark.parametrize(
@@ -41,7 +41,7 @@ def test_forward_invalid_parameter(namespace, pod, from_port, to_port):
 
     # Act and Assert
     with pytest.raises(ValueError):
-        with portforward.forward(namespace, pod, from_port, to_port):
+        with aioportforward.forward(namespace, pod, from_port, to_port):
             pytest.fail("Should raise error before")
 
 
@@ -55,6 +55,6 @@ def test_forward_raise_error():
     to = 80
 
     # Act and Assert
-    with pytest.raises(portforward.PortforwardError):
-        with portforward.forward(namespace, pod, from_, to):
+    with pytest.raises(aioportforward.PortforwardError):
+        with aioportforward.forward(namespace, pod, from_, to):
             pytest.fail("Should raise error before")
